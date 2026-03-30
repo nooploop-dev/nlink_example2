@@ -1,5 +1,5 @@
 #include "rclcpp/rclcpp.hpp"
-#include "nlink_parser/msg/linktrack_tagframe0.hpp"
+#include "nlink_parser2/msg/linktrack_tagframe0.hpp"
 #include "std_msgs/msg/string.hpp"
 
 using namespace std::chrono_literals;
@@ -13,7 +13,7 @@ public:
     // ================== 数据订阅部分 ==================
 
     // 订阅标签数据（移动标签信息）
-    tag_sub_ = create_subscription<nlink_parser::msg::LinktrackTagframe0>(
+    tag_sub_ = create_subscription<nlink_parser2::msg::LinktrackTagframe0>(
       "nlink_linktrack_tagframe0", 10,
       std::bind(&LinkTrackDemo::tag_callback, this, std::placeholders::_1));
     // ================== 数据发布部分 ==================
@@ -32,7 +32,7 @@ public:
   }
 
 private:
-  void tag_callback(const nlink_parser::msg::LinktrackTagframe0::SharedPtr msg)
+  void tag_callback(const nlink_parser2::msg::LinktrackTagframe0::SharedPtr msg)
   {
     RCLCPP_INFO(get_logger(),
                 "标签数据 - 角色: %d, ID: %d, 位置: (%.3f, %.3f, %.3f), "
@@ -81,7 +81,7 @@ private:
     count_++;  
   }
 
-  rclcpp::Subscription<nlink_parser::msg::LinktrackTagframe0>::SharedPtr tag_sub_;
+  rclcpp::Subscription<nlink_parser2::msg::LinktrackTagframe0>::SharedPtr tag_sub_;
 
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr data_pub_;
 
