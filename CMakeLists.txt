@@ -8,7 +8,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(nlink_parser REQUIRED)
+find_package(nlink_parser2 REQUIRED)
 
 add_executable(nlink_subscriber
   src/main.cpp
@@ -22,7 +22,7 @@ target_include_directories(nlink_subscriber PUBLIC
 ament_target_dependencies(nlink_subscriber
   rclcpp
   std_msgs
-  nlink_parser
+  nlink_parser2
 )
 
 install(TARGETS nlink_subscriber
@@ -32,7 +32,7 @@ install(TARGETS nlink_subscriber
 ament_export_dependencies(
   rclcpp 
   std_msgs 
-  nlink_parser
+  nlink_parser2
 )
 
 if(BUILD_TESTING)
